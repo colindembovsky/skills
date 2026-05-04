@@ -120,7 +120,7 @@ gh skill preview colindembovsky/skills context-packet
 Pin a specific version:
 
 ```bash
-gh skill install colindembovsky/skills context-packet@v0.1.1
+gh skill install colindembovsky/skills context-packet@v0.1.2
 ```
 
 You can also distribute the skill by sharing the packaged `.skill` artifact from

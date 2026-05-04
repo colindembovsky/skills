@@ -50,10 +50,25 @@ jobs:
           Or download context-packet.skill from this release and install it as a Copilot skill.
           EOF
 
-          if gh release view "$TAG_NAME" >/dev/null 2>&1; then
-            gh release upload "$TAG_NAME" dist/context-packet.skill --clobber
-          else
-            gh release create "$TAG_NAME" dist/context-packet.skill \
-              --title "$TAG_NAME" \
-              --notes-file "$release_notes"
-          fi
+          publish_release() {
+            if gh release view "$TAG_NAME" >/dev/null 2>&1; then
+              gh release edit "$TAG_NAME" --title "$TAG_NAME" --notes-file "$release_notes"
+              gh release upload "$TAG_NAME" dist/context-packet.skill --clobber
+            else
+              gh release create "$TAG_NAME" dist/context-packet.skill \
+                --verify-tag \
+                --title "$TAG_NAME" \
+                --notes-file "$release_notes"
+            fi
+          }
+
+          for attempt in 1 2 3 4 5; do
+            if publish_release; then
+              exit 0
+            fi
+
+            sleep "$((attempt * 10))"
+          done
+
+          echo "Failed to publish release after retries" >&2
+          exit 1

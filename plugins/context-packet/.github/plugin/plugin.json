@@ -1,7 +1,7 @@
 {
   "name": "context-packet",
   "description": "Create execution-ready context packets for GitHub issues, AI agent tasks, bug reports, features, refactors, investigations, and work briefs.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": [
     "context-packet",
     "agent-ready",
