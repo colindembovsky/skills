@@ -7,7 +7,7 @@ execution-ready GitHub issue context.
 The skill is based on the principle that context is infrastructure for effective
 AI-agent work. For the motivation behind context packets, see
 [The Context Packet Matters](https://colinsalmcorner.com/from-sprints-to-swarms-part-2-context-is-infrastructure/#the-context-packet-matters)
-in Colin Salm's "From Sprints to Swarms" series.
+in my "From Sprints to Swarms" series.
 
 ## What the skill does
 
