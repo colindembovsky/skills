@@ -96,6 +96,24 @@ git tag v1.0.0
 git push origin v1.0.0
 ```
 
+## Installing as a plugin
+
+Distribute the skill by sharing the packaged `.skill` artifact from the latest
+GitHub Release:
+
+```text
+https://github.com/colindembovsky/skills/releases/latest
+```
+
+Users should download `context-packet.skill` from the release assets and import
+or install that file in their skill-compatible AI agent or plugin manager. The
+`.skill` file is the portable plugin package; this repository is the source used
+to build it.
+
+The project extension in `.github/extensions/context-packet/extension.mjs` is
+only for Copilot CLI smoke testing in this repository. It is not required for
+users who only want to install the packaged `context-packet.skill` plugin.
+
 ## Extension smoke test
 
 Copilot CLI project extensions are discovered from:
