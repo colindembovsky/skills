@@ -1,0 +1,53 @@
+name: Publish skill release
+
+"on":
+  push:
+    tags:
+      - "**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-skill-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Package and publish skill
+    if: github.event.deleted == false
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Package context-packet skill
+        run: python3 scripts/package-context-packet-skill.py
+
+      - name: Verify package
+        run: |
+          test -s dist/context-packet.skill
+          unzip -t dist/context-packet.skill
+
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+
+          release_notes="$(mktemp)"
+          cat > "$release_notes" <<EOF
+          Packaged context-packet skill for ${TAG_NAME}.
+
+          Download context-packet.skill from this release and install it as a Copilot skill.
+          EOF
+
+          if gh release view "$TAG_NAME" >/dev/null 2>&1; then
+            gh release upload "$TAG_NAME" dist/context-packet.skill --clobber
+          else
+            gh release create "$TAG_NAME" dist/context-packet.skill \
+              --title "$TAG_NAME" \
+              --notes-file "$release_notes"
+          fi

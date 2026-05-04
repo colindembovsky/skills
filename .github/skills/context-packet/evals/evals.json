@@ -1,0 +1,49 @@
+{
+  "skill_name": "context-packet",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a context packet for adding rate-limit headers to the search API in github/search-service. It should return Retry-After when a free-plan org hits the limit. In scope: API behavior, OpenAPI docs, tests. Out of scope: changing thresholds or billing plan logic.",
+      "expected_output": "A context packet draft that asks for or supplies missing proof-of-done, dependencies, risks, roll-forward path, owner, and risk tier before issue creation.",
+      "files": [],
+      "expectations": [
+        "The output includes Desired Outcome, In Scope, Out of Scope, Proof of Done, Dependencies and Affected Systems, Risks, Roll-Forward, and Handoff Evidence sections.",
+        "The output asks for missing risk, owner, and roll-forward details before creating an issue.",
+        "The output previews the issue or states that preview is required before creation."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Something is broken with login. Make an issue for Copilot.",
+      "expected_output": "A batched clarification request rather than an immediate issue creation attempt.",
+      "files": [],
+      "expectations": [
+        "The output does not create an issue from the vague prompt.",
+        "The output asks grouped questions for target repo, desired outcome, scope, proof of done, affected systems, risks, owner, and risk tier.",
+        "The output explains that short bullets are acceptable."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Write a task brief for refactoring the billing worker retry code. The likely files are worker.py and retry_policy.py. I want it easier to test, but don't change billing semantics.",
+      "expected_output": "A refactor-oriented context packet that emphasizes scope boundaries, testable acceptance criteria, risks, and recovery.",
+      "files": [],
+      "expectations": [
+        "The output treats 'task brief' as a context packet request.",
+        "The output includes non-goals or out-of-scope items that protect billing semantics.",
+        "The output asks for or includes concrete testable acceptance criteria instead of accepting 'easier to test' as sufficient."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Draft the context packet for a docs-only update to explain how to rotate API keys. Do not create a GitHub issue yet. Repo is github/internal-docs. Owner is @docs-maintainers. Risk is low.",
+      "expected_output": "A Markdown-only packet draft that does not call issue creation tools and clearly marks missing optional context.",
+      "files": [],
+      "expectations": [
+        "The output does not attempt to create a GitHub issue.",
+        "The output still includes the required packet sections.",
+        "The output flags missing proof-of-done and roll-forward details if they were not supplied."
+      ]
+    }
+  ]
+}
