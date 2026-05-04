@@ -1,0 +1,8 @@
+.DS_Store
+
+# Installed agent skills (published skill source lives under plugins/).
+.github/skills/
+.claude/skills/
+.cursor/skills/
+.agents/skills/
+.agent/skills/

@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const extensionDir = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(extensionDir, "../../..");
-const skillDir = resolve(repoRoot, ".github/skills/context-packet");
+const skillDir = resolve(repoRoot, "plugins/context-packet/skills/context-packet");
 const skillPath = resolve(skillDir, "SKILL.md");
 const packagePath = resolve(repoRoot, "dist/context-packet.skill");
 const referenceUrl =

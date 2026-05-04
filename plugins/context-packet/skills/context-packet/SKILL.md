@@ -7,6 +7,7 @@ description: >
   write a task brief, document work for Copilot, prepare context for an agent,
   turn a vague idea into a well-documented issue, or file an issue with full
   context.
+license: MIT
 compatibility: >
   Issue creation depends on available GitHub tools. Prefer issue_write, fall
   back to create_issue, gh issue create guidance, or copy-paste Markdown.

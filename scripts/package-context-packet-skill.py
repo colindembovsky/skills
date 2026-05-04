@@ -10,7 +10,7 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL_DIR = ROOT / ".github" / "skills" / "context-packet"
+SKILL_DIR = ROOT / "plugins" / "context-packet" / "skills" / "context-packet"
 DIST_DIR = ROOT / "dist"
 
 EXCLUDE_DIRS = {"__pycache__", "node_modules"}

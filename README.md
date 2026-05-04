@@ -27,12 +27,18 @@ creation of a GitHub issue.
 ## Repository layout
 
 ```text
+plugins/
+  context-packet/
+    .github/
+      plugin/
+        plugin.json
+    skills/
+      context-packet/
+        SKILL.md
+        references/
+        evals/
+    README.md
 .github/
-  skills/
-    context-packet/
-      SKILL.md
-      references/
-      evals/
   extensions/
     context-packet/
       extension.mjs
@@ -42,9 +48,10 @@ dist/
   context-packet.skill
 ```
 
-`SKILL.md` contains the trigger metadata and runtime instructions. The
-`references/` files hold the canonical packet template, field schema, issue
-creation guidance, and examples. The project extension exposes the
+`plugins/context-packet/.github/plugin/plugin.json` is the plugin manifest used
+by plugin-aware installers. `SKILL.md` contains the trigger metadata and runtime
+instructions. The `references/` files hold the canonical packet template, field
+schema, issue creation guidance, and examples. The project extension exposes the
 `context_packet_skill_info` smoke-test tool so the Copilot CLI extension loader
 can be verified from this repository.
 
@@ -98,8 +105,26 @@ git push origin v1.0.0
 
 ## Installing as a plugin
 
-Distribute the skill by sharing the packaged `.skill` artifact from the latest
-GitHub Release:
+Install directly with GitHub CLI:
+
+```bash
+gh skill install colindembovsky/skills context-packet
+```
+
+Preview before installing:
+
+```bash
+gh skill preview colindembovsky/skills context-packet
+```
+
+Pin a specific version:
+
+```bash
+gh skill install colindembovsky/skills context-packet@v0.1.1
+```
+
+You can also distribute the skill by sharing the packaged `.skill` artifact from
+the latest GitHub Release:
 
 ```text
 https://github.com/colindembovsky/skills/releases/latest
@@ -112,7 +137,7 @@ to build it.
 
 The project extension in `.github/extensions/context-packet/extension.mjs` is
 only for Copilot CLI smoke testing in this repository. It is not required for
-users who only want to install the packaged `context-packet.skill` plugin.
+users who install with `gh skill` or the packaged `context-packet.skill` plugin.
 
 ## Extension smoke test
 

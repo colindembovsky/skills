@@ -41,7 +41,13 @@ jobs:
           cat > "$release_notes" <<EOF
           Packaged context-packet skill for ${TAG_NAME}.
 
-          Download context-packet.skill from this release and install it as a Copilot skill.
+          Install with GitHub CLI:
+
+          \`\`\`bash
+          gh skill install colindembovsky/skills context-packet@${TAG_NAME}
+          \`\`\`
+
+          Or download context-packet.skill from this release and install it as a Copilot skill.
           EOF
 
           if gh release view "$TAG_NAME" >/dev/null 2>&1; then
